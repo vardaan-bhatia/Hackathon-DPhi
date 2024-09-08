@@ -17,7 +17,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   ({ children, icon, onClick, sx }, ref) => {
     return (
       <MuiButton ref={ref} onClick={onClick} sx={sx} startIcon={icon}>
-        {children} {/* Use children here */}
+        {children}
       </MuiButton>
     );
   }
