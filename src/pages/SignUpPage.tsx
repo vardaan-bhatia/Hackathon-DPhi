@@ -13,9 +13,10 @@ import {
   MenuItem,
   Select,
   Link,
+  Grid,
 } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
-import Button from "../components/atoms/Button"; // Importing reusable Button
+import Button from "../components/atoms/Button";
 
 const SignUpPage: React.FC = () => {
   const [firstName, setFirstName] = useState<string>("");
@@ -41,12 +42,12 @@ const SignUpPage: React.FC = () => {
 
   return (
     <Container
-      maxWidth="sm"
+      maxWidth="md"
       sx={{
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        height: "100vh",
+        minHeight: "100vh",
       }}
     >
       <Paper
@@ -56,13 +57,14 @@ const SignUpPage: React.FC = () => {
           borderRadius: 2,
           textAlign: "center",
           width: "100%",
+          maxWidth: "500px",
         }}
       >
-        <Typography variant="h3" gutterBottom>
+        <Typography variant="h4" gutterBottom>
           Sign Up
         </Typography>
         <Typography variant="body1" color="textSecondary" sx={{ mb: 4 }}>
-          Create your account. It's free and only takes a minute.
+          Create your account. It only takes a minute.
         </Typography>
         <Box
           component="form"
@@ -72,62 +74,82 @@ const SignUpPage: React.FC = () => {
             handleSignUp();
           }}
         >
-          <TextField
-            fullWidth
-            label="First Name"
-            variant="outlined"
-            value={firstName}
-            onChange={(e) => setFirstName(e.target.value)}
-            sx={{ mb: 3 }}
-          />
-          <TextField
-            fullWidth
-            label="Last Name"
-            variant="outlined"
-            value={lastName}
-            onChange={(e) => setLastName(e.target.value)}
-            sx={{ mb: 3 }}
-          />
-          <TextField
-            fullWidth
-            label="Email"
-            variant="outlined"
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            sx={{ mb: 3 }}
-          />
-          <FormControl fullWidth variant="outlined" sx={{ mb: 3 }}>
-            <InputLabel>Password</InputLabel>
-            <OutlinedInput
-              type={showPassword ? "text" : "password"}
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              endAdornment={
-                <InputAdornment position="end">
-                  <IconButton
-                    aria-label="toggle password visibility"
-                    onClick={handleTogglePasswordVisibility}
-                    edge="end"
-                  >
-                    {showPassword ? <VisibilityOff /> : <Visibility />}
-                  </IconButton>
-                </InputAdornment>
-              }
-              label="Password"
-            />
-          </FormControl>
-          <FormControl fullWidth sx={{ mb: 3 }}>
-            <InputLabel>Role</InputLabel>
-            <Select
-              value={role}
-              onChange={(e) => setRole(e.target.value)}
-              label="Role"
-            >
-              <MenuItem value="user">User</MenuItem>
-              <MenuItem value="admin">Admin</MenuItem>
-            </Select>
-          </FormControl>
+          <Grid container spacing={2}>
+            {/* First Name */}
+            <Grid item xs={12} sm={6}>
+              <TextField
+                fullWidth
+                label="First Name"
+                variant="outlined"
+                value={firstName}
+                onChange={(e) => setFirstName(e.target.value)}
+              />
+            </Grid>
+
+            {/* Last Name */}
+            <Grid item xs={12} sm={6}>
+              <TextField
+                fullWidth
+                label="Last Name"
+                variant="outlined"
+                value={lastName}
+                onChange={(e) => setLastName(e.target.value)}
+              />
+            </Grid>
+
+            {/* Email */}
+            <Grid item xs={12}>
+              <TextField
+                fullWidth
+                label="Email"
+                variant="outlined"
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </Grid>
+
+            {/* Password */}
+            <Grid item xs={12}>
+              <FormControl fullWidth variant="outlined">
+                <InputLabel>Password</InputLabel>
+                <OutlinedInput
+                  type={showPassword ? "text" : "password"}
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  endAdornment={
+                    <InputAdornment position="end">
+                      <IconButton
+                        aria-label="toggle password visibility"
+                        onClick={handleTogglePasswordVisibility}
+                        edge="end"
+                      >
+                        {showPassword ? <VisibilityOff /> : <Visibility />}
+                      </IconButton>
+                    </InputAdornment>
+                  }
+                  label="Password"
+                />
+              </FormControl>
+            </Grid>
+
+            {/* Role */}
+            <Grid item xs={12}>
+              <FormControl fullWidth>
+                <InputLabel>Role</InputLabel>
+                <Select
+                  value={role}
+                  onChange={(e) => setRole(e.target.value)}
+                  label="Role"
+                >
+                  <MenuItem value="user">User</MenuItem>
+                  <MenuItem value="admin">Admin</MenuItem>
+                </Select>
+              </FormControl>
+            </Grid>
+          </Grid>
+
+          {/* Sign Up Button */}
           <Box sx={{ mt: 4 }}>
             <Button
               type="submit"
@@ -136,6 +158,7 @@ const SignUpPage: React.FC = () => {
                 backgroundColor: "#1976d2",
                 color: "#fff",
                 padding: "12px 0",
+                width: "100%",
                 "&:hover": {
                   backgroundColor: "#1565c0",
                 },
@@ -145,6 +168,8 @@ const SignUpPage: React.FC = () => {
             </Button>
           </Box>
         </Box>
+
+        {/* Login Link */}
         <Typography variant="body2" sx={{ mt: 4 }}>
           Already have an account?{" "}
           <Link

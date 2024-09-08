@@ -4,6 +4,7 @@ import HomePage from "./pages/Homepage";
 import ChallengeDetailsPage from "./pages/ChallengeDetailsPage";
 import LoginPage from "./pages/LoginPage";
 import SignUpPage from "./pages/SignUpPage";
+import ManageHackathon from "./pages/ManageHackathon";
 
 const App: React.FC = () => {
   return (
@@ -13,6 +14,7 @@ const App: React.FC = () => {
         <Route path="/create-challenge" element={<ChallengeDetailsPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignUpPage />} />
+        <Route path="/managehackathon" element={<ManageHackathon />} />
       </Routes>
     </Router>
   );

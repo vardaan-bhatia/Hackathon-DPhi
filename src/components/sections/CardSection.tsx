@@ -3,6 +3,7 @@ import { Grid, Paper, Typography, Button } from "@mui/material";
 import first from "../../assets/images/first.png";
 import second from "../../assets/images/second.png";
 import fifth from "../../assets/images/fifth.png";
+import { Link } from "react-router-dom";
 
 const CardSection: React.FC = () => {
   const cardsData = [
@@ -112,19 +113,21 @@ const CardSection: React.FC = () => {
               <span style={{ fontWeight: "bold" }}>{card.time.minutes}</span>{" "}
               Mins
             </Typography>
-            <Button
-              variant="contained"
-              sx={{
-                mt: 2,
-                backgroundColor: "#44924C",
-                color: "#fff",
-                "&:hover": {
-                  backgroundColor: "#357a40",
-                },
-              }}
-            >
-              {card.buttonText}
-            </Button>
+            <Link to={"/managehackathon"}>
+              <Button
+                variant="contained"
+                sx={{
+                  mt: 2,
+                  backgroundColor: "#44924C",
+                  color: "#fff",
+                  "&:hover": {
+                    backgroundColor: "#357a40",
+                  },
+                }}
+              >
+                {card.buttonText}
+              </Button>
+            </Link>
           </Paper>
         </Grid>
       ))}

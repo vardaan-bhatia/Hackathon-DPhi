@@ -30,7 +30,7 @@ const LoginPage: React.FC = () => {
 
   return (
     <Container
-      maxWidth="sm" // Increased size for a larger form
+      maxWidth="sm"
       sx={{
         display: "flex",
         justifyContent: "center",
@@ -44,7 +44,7 @@ const LoginPage: React.FC = () => {
           padding: 6,
           borderRadius: 2,
           textAlign: "center",
-          width: "100%", // Ensure the form takes full width of the container
+          width: "100%",
         }}
       >
         <Typography variant="h3" gutterBottom>
@@ -97,8 +97,8 @@ const LoginPage: React.FC = () => {
               sx={{
                 backgroundColor: "#44924C",
                 color: "#fff",
-                width: "100%", // Make the button full-width
-                padding: "12px 0", // Increased button size for better appearance
+                width: "100%",
+                padding: "12px 0",
                 "&:hover": {
                   backgroundColor: "#357a40",
                 },
